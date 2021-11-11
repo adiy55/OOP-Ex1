@@ -24,14 +24,16 @@ print(e.get_speed())
 
 calls = pd.read_csv("Ex1_input/Ex1_Calls/Calls_a.csv", index_col=False, header=None)  # DataFrame of calls
 
+# calls[calls[5] == -1]
+
 # while len(calls) > 0:
 #     first_call = CallForElevator.__init__(calls.iloc[0])
 #     first_call_duration = Time.time_for_call(first_call)
 # calls[calls[1] < first_call.get_time]
 
-first_call = CallForElevator(calls.iloc[0])
-
-print(first_call.get_src())
+# first_call = CallForElevator(calls.iloc[0])
+#
+# print(first_call.get_src())
 
 
 # print((calls.iloc[0]).to_list())
