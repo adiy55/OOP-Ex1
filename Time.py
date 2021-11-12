@@ -1,13 +1,17 @@
-import Elevator
-import CallForElevator
+from Elevator import Elevator
+from CallForElevator import CallForElevator
 
 
 def time_for_call(elevator: Elevator, call: CallForElevator) -> float:
     """Returns the time it will take the elevator to finish this call"""
     calls_list = elevator.get_call_list()
-    last_call = calls_list[-1]  # [len(calls_list) - 1]
-    last_floor = last_call.get_dest()
-    floors_to_travel = abs(last_floor - call.get_src) + abs(call.get_src - call.get_dest)
+    last_floor = 0
+    if len(calls_list) > 0:
+        last_call = calls_list[-1]  # [len(calls_list) - 1]
+        last_floor = last_call.get_dest()
+
+    # print(call.get_src)
+    floors_to_travel = abs(last_floor - call.get_src()) + abs(call.get_src() - call.get_dest())
 
     total_time_for_call = 2 * (elevator.get_open_time() + elevator.get_close_time() + elevator.get_start_time() +
                                elevator.get_stop_time()) + (floors_to_travel * elevator.get_speed())
@@ -26,11 +30,13 @@ def call_falls_in_range(elevator: Elevator, call: CallForElevator) -> bool:
     (in regards to time differences)"""
     call_list_elev = elevator.get_call_list()
     potential_call_time = call.get_time()  # time of call of the query call
-    last_call = call_list_elev[-1]  # [len(calls_list) - 1]
-    last_call_time = last_call.get_time()  # time of the last call of the elevator
+    last_call_time = 0
+    if len(call_list_elev) > 0:
+        last_call = call_list_elev[-1]  # [len(calls_list) - 1]
+        last_call_time = last_call.get_time()  # time of the last call of the elevator
 
     floors_to_travel = abs(last_call.get_dest() - call.get_src())
     total_time_for_to_reach = (elevator.get_open_time() + elevator.get_close_time() + elevator.get_start_time() +
                                elevator.get_stop_time()) + (floors_to_travel * elevator.get_speed())
 
-    return total_time_for_to_reach + last_call_time > potential_call_time
+    return (total_time_for_to_reach + last_call_time) > potential_call_time
