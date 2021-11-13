@@ -17,6 +17,9 @@ def time_for_call(elevator: Elevator, call: CallForElevator) -> float:
     return total_time_for_call
 
 
+def time_to_stop(elevator: Elevator) -> float:
+    return elevator.get_open_time() + elevator.get_close_time() + elevator.get_start_time() + elevator.get_stop_time()
+
 
 def get_new_call_time(elevator: Elevator, call: CallForElevator) -> float:
     """Returns the time it will take the elevator to finish all its calls (dependent on previously calculated)"""
