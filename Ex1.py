@@ -6,7 +6,7 @@ from Building import Building
 from CallForElevator import CallForElevator
 from Elevator import Elevator
 
-filePath = "Ex1_input/Ex1_Buildings/B2.json"
+filePath = "Ex1_input/Ex1_Buildings/B3.json"
 b = Building(filePath)
 calls = pd.read_csv("Ex1_input/Ex1_Calls/Calls_c.csv", index_col=False, header=None)  # DataFrame of calls
 elevators = b.get_elevators()
@@ -39,14 +39,11 @@ while not calls[calls[5] == -1].empty:
             elevators[elev_index].set_time_to_finish(Time.time_to_stop(elevators[elev_index]))
             elevators[elev_index].get_call_list().insert(curr_length, call)
             curr_length += 1
-    # lst = elevators[elev_index].get_call_list()
-    # lst[curr_length: len(lst) - 1].sort(key=lambda x: x.get_src())
+
 print(len(calls[calls[5] == 0]))
 print(len(calls[calls[5] == 1]))
 
 # -----------------------------------------------------------------------------
-
-# need to add if for checking if each call can be reached (the floors are in range of building)
 
 # f = open(filePath)
 #
