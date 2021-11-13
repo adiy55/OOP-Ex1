@@ -54,6 +54,7 @@ def main(building_path, input_path, output_path):
                 (curr_first_call.get_src() <= call.get_src() <= curr_first_call.get_dest()) or (
                 curr_first_call.get_src() >= call.get_src() >= curr_first_call.get_dest())):
             calls.loc[curr_call.name, 5] = elev_index
+            df.loc[curr_call.name, 5] = elev_index
             elevators[elev_index].set_time_to_finish(Time.time_to_stop(elevators[elev_index]))
             elevators[elev_index].get_call_list().insert(curr_length, call)
             curr_length += 1
