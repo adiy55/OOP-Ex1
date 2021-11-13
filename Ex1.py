@@ -13,18 +13,18 @@ elevators = b.get_elevators()
 
 while not calls[calls[5] == -1].empty:
     c = calls[calls[5] == -1].iloc[0]
-    call = CallForElevator(c)
+    curr_first_call = CallForElevator(c)
     elev_index = 0
-    min_time = Time.get_new_call_time(elevators[elev_index], call)
+    min_time = Time.get_new_call_time(elevators[elev_index], curr_first_call)
     for i in range(1, len(elevators)):
-        tmp_time = Time.get_new_call_time(elevators[i], call)
+        tmp_time = Time.get_new_call_time(elevators[i], curr_first_call)
         if tmp_time < min_time:
             min_time = tmp_time
             elev_index = i
     calls.loc[c.name, 5] = elev_index  # c.name is the row, 5 is the col
-    elevators[elev_index].get_call_list().append(call)
+    elevators[elev_index].get_call_list().append(curr_first_call)
 
-    # curr_length = len(elevators[elev_index].get_call_list())
+    curr_length = len(elevators[elev_index].get_call_list())
 
     elevators[elev_index].set_time_to_finish(min_time)
     unanswered_calls = calls[calls[5] == -1]
@@ -32,11 +32,15 @@ while not calls[calls[5] == -1].empty:
         curr_call = unanswered_calls.iloc[i]
         call = CallForElevator(curr_call)
         curr_time = Time.call_falls_in_range(elevators[elev_index], call)
-        if curr_time:
+        if curr_time and (
+                (curr_first_call.get_src() <= call.get_src() <= curr_first_call.get_dest()) or (
+                curr_first_call.get_src() >= call.get_src() >= curr_first_call.get_dest())):
             calls.loc[curr_call.name, 5] = elev_index
             elevators[elev_index].set_time_to_finish(Time.time_to_stop(elevators[elev_index]))
-            elevators[elev_index].get_call_list().insert(0, call)
-
+            elevators[elev_index].get_call_list().insert(curr_length, call)
+            curr_length += 1
+    # lst = elevators[elev_index].get_call_list()
+    # lst[curr_length: len(lst) - 1].sort(key=lambda x: x.get_src())
 print(len(calls[calls[5] == 0]))
 print(len(calls[calls[5] == 1]))
 
