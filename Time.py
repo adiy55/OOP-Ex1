@@ -10,12 +10,12 @@ def time_for_call(elevator: Elevator, call: CallForElevator) -> float:
         last_call = calls_list[-1]  # [len(calls_list) - 1]
         last_floor = last_call.get_dest()
 
-    # print(call.get_src)
     floors_to_travel = abs(last_floor - call.get_src()) + abs(call.get_src() - call.get_dest())
 
     total_time_for_call = 2 * (elevator.get_open_time() + elevator.get_close_time() + elevator.get_start_time() +
                                elevator.get_stop_time()) + (floors_to_travel * elevator.get_speed())
     return total_time_for_call
+
 
 
 def get_new_call_time(elevator: Elevator, call: CallForElevator) -> float:
