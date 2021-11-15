@@ -11,6 +11,13 @@ class Elevator:
 
         self._callList = []  # calls for elevator
         self._timeToFinishAllCalls = 0
+        self._norm_speed = 0
+
+    def get_norm_speed(self):
+        return self._norm_speed
+
+    def set_norm_speed(self, norm_speed):
+        self._norm_speed = norm_speed
 
     def get_time_to_finish(self):
         return self._timeToFinishAllCalls

@@ -1,3 +1,4 @@
+import json
 import sys
 
 import pandas as pd
@@ -61,12 +62,12 @@ main(b_path, i_path, o_path)
 
 # -----------------------------------------------------------------------------
 
-# f = open(filePath)
-#
-# building = json.loads(f.read())
-#
-# print(building)
-# print(building["_elevators"])
-# print(building["_elevators"][0])
-#
-# f.close()
+f = open("Ex1_input/Ex1_Buildings/B2.json")
+
+building = json.loads(f.read())
+
+print(building)
+print(building["_elevators"])
+print(building["_elevators"][0]["_speed"])
+
+f.close()
