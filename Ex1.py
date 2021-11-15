@@ -31,7 +31,6 @@ def main(building_path, input_path, output_path):
                 min_time = tmp_time
                 elev_index = i
         calls.loc[c.name, 5] = elev_index  # c.name is the row, 5 is the col
-        df.loc[c.name, 5] = elev_index
         elevators[elev_index].get_call_list().append(curr_first_call)
 
         curr_length = len(elevators[elev_index].get_call_list())
@@ -47,7 +46,6 @@ def main(building_path, input_path, output_path):
                 (curr_first_call.get_src() <= call.get_src() <= curr_first_call.get_dest()) or (
                 curr_first_call.get_src() >= call.get_src() >= curr_first_call.get_dest())):
             calls.loc[curr_call.name, 5] = elev_index
-            df.loc[curr_call.name, 5] = elev_index
             elevators[elev_index].set_time_to_finish(Time.time_to_stop(elevators[elev_index]))
             elevators[elev_index].get_call_list().insert(curr_length, call)
             curr_length += 1
@@ -55,7 +53,7 @@ def main(building_path, input_path, output_path):
     for i in range(len(elevators)):
         print(len(calls[calls[5] == i]))
 
-    df.to_csv(output_path, index=False, header=False)  # todo: how to move last line in csv
+    calls.to_csv(output_path, index=False, header=False)  # todo: how to move last line in csv
 
 
 main(b_path, i_path, o_path)
