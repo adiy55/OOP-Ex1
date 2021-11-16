@@ -5,8 +5,8 @@ from Elevator import Elevator
 
 def read_json(filepath) -> dict:
     """
-    :param filepath:
-    :return: Reading JSON file function
+    :param filepath: path were the file is saved
+    :return: JSON file in python dictionary format
     """
     file = open(filepath)
     building = json.loads(file.read())
@@ -28,7 +28,7 @@ class Building:
         return self.building["_maxFloor"]
 
     def init_elevators(self) -> list:
-        """:returns initialized list of elevators"""
+        """:returns initialize list of elevators"""
         lst = []
         for i in range(len(self.building["_elevators"])):
             curr_elevator = self.building["_elevators"][i]

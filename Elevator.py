@@ -11,17 +11,21 @@ class Elevator:
         self._norm_speed = 0
 
     def get_norm_speed(self):
-        """returns the normalized speed of the elevator"""
+        """:returns the normalized speed of the elevator"""
         return self._norm_speed
 
     def set_norm_speed(self, norm_speed):
-        """Sets the normalized speed of the elevator"""
+        """
+        sets the normalized speed of the elevator
+        :param norm_speed: calculated normalized speed
+        :return: none
+        """
         self._norm_speed = norm_speed
 
     def get_id(self):
-        """Returns ID of elevator"""
+        """:return elevator ID"""
         return self._id
 
     def get_speed(self):
-        """Returns speed of e"""
+        """:return elevator speed"""
         return self._speed

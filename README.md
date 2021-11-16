@@ -1,5 +1,11 @@
 # OOP-Ex1
 
+## Preface:
+
+This is the second assignment in the OOP course. In this task we had to write an offline algorithm that assigns elevator
+calls to the most optimal elevator. This is measured by the average waiting time, uncompleted calls, etc. This is a
+continuation of the first assignment where we wrote an online algorithm for the same problem.
+
 ## 1. Algorithm:
 
 * For each elevator:
@@ -8,21 +14,32 @@
     * Calculate the **number of calls** that will be assigned to an elevator by multiplying the fraction of speed by the
       total number of calls.
     * Divide the total number of calls by the number of calls assigned to an elevator to determine how many **calls to
-      skip** when managing assignments. This provides the elevator time to optimize handling existing calls before receiving new
-      ones.
+      skip** when managing assignments. This provides the elevator time to optimize handling existing calls before
+      receiving new ones.
     * **Allocate unassigned calls** to the current elevator with intervals according to calls to skip.
 * If there are **unassigned calls left**: Assign one call per elevator, alternate between elevators. Continue until all
   calls are assigned.
 
 ## 2. Our Results:
-Building/Calls | B1/a | B2/a | B3/a | B3/b | B3/c | B3/d | B4/a | B4/b | B4/c | B4/d | B5/a | B5/b | B5/c | B5/d
---- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
-total waiting time | 11292.0 | 6062.0 | 3342.0 | 539322.251 | 567171.176 | 545657.613 | 2173.0 | 209616.179 | 207717.284 | 202338.686 | 1843.0 | 70008.114 | 69360.0 | 70306.0
-average waiting time per call | 112.92 | 60.62 | 33.42 | 539.322 | 567.171 | 545.658 | 21.73 | 209.616 | 207.717 | 202.339 | 18.43 | 70.008 | 69.36 | 70.306
-uncompleted calls | 0 | 0 | 0 | 138 | 85 | 86 | 0 | 31 | 12 | 13 | 0 | 3 | 0 | 0 | 
-certificate | -276569737 | -187183277 | -29052204 | -1774316727 | -1942650510 | -2001764854 | -52641752 | -745927639 | -770323363 | -786806834 | -80073359 | -152641781 | -155349576 | -152641771 | 
 
-*Rounded to 3 digits after the decimal point.*
+Building | Calls | total waiting time | average waiting time per call | uncompleted calls | certificate |
+:---: | :---: | :---: | :---: | :---: | :---: | 
+B1 | a |11292.0 |  112.92 |0 | -276569737 |
+B2 | a | 6062.0 | 60.62 | 0 | -187183277 |
+B3 | a | 3342.0 | 33.42 | 0 | -29052204 |
+B3 | b | 539322.251 | 539.322 | 138 | -1774316727 |
+B3 | c | 567171.176 | 567.171 |85 | -1942650510 |
+B3 | d | 545657.613 | 545.658 | 86 | -2001764854 | 
+B4 | a | 2173.0 |  21.73 | 0 |-52641752 |
+B4 | b | 209616.179 | 209.616 | 31 |  -745927639 |
+B4 | c | 207717.284 | 207.717 | 12 |  -770323363 |
+B4 | d | 202338.686 |  202.339 |13 | -786806834 |
+B5 | a | 1843.0 | 18.43 | 0 | -80073359 |
+B5 | b | 70008.114 | 70.008 | 3 | -152641781 |
+B5 | c | 69360.0 | 69.36 | 0 | -155349576 |
+B5 | d | 70306.0 | 70.306 | 0 |  -152641771 |
+
+*Values were rounded to 3 digits after the decimal point.*
 
 ## 3. Dependencies:
 
