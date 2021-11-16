@@ -68,4 +68,4 @@ java -jar Ex1_checker_V1.2_obf.jar 1111,2222 <Building.json> <Output.csv> <out.l
 
 ## 5. UML
 
-![UML](../../Desktop/UML.jpeg)
+![](UML.jpeg)
