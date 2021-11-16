@@ -1,5 +1,11 @@
 # OOP-Ex1
 
+## Preface:
+
+This is the second assignment in the OOP course. In this task we had to write an offline algorithm that assigns elevator
+calls to the most optimal elevator. This is measured by the average waiting time, uncompleted calls, etc. This is a
+continuation of the first assignment where we wrote an online algorithm for the same problem.
+
 ## 1. Algorithm:
 
 * For each elevator:
@@ -8,8 +14,8 @@
     * Calculate the **number of calls** that will be assigned to an elevator by multiplying the fraction of speed by the
       total number of calls.
     * Divide the total number of calls by the number of calls assigned to an elevator to determine how many **calls to
-      skip** when managing assignments. This provides the elevator time to optimize handling existing calls before receiving new
-      ones.
+      skip** when managing assignments. This provides the elevator time to optimize handling existing calls before
+      receiving new ones.
     * **Allocate unassigned calls** to the current elevator with intervals according to calls to skip.
 * If there are **unassigned calls left**: Assign one call per elevator, alternate between elevators. Continue until all
   calls are assigned.
@@ -33,7 +39,7 @@ B5 | b | 70008.114 | 70.008 | 3 | -152641781 |
 B5 | c | 69360.0 | 69.36 | 0 | -155349576 |
 B5 | d | 70306.0 | 70.306 | 0 |  -152641771 |
 
-*Numbers were rounded to 3 digits after the decimal point.*
+*Values were rounded to 3 digits after the decimal point.*
 
 ## 3. Dependencies:
 
