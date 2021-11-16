@@ -4,11 +4,11 @@
 
 * For each elevator:
     * Calculate the **fraction of speed** by dividing the current elevator speed by the sum of all elevator speeds in
-      the building.
+      the building (Normalization).
     * Calculate the **number of calls** that will be assigned to an elevator by multiplying the fraction of speed by the
       total number of calls.
     * Divide the total number of calls by the number of calls assigned to an elevator to determine how many **calls to
-      skip** when managing assignments. This provides the elevator time to handle existing calls before receiving new
+      skip** when managing assignments. This provides the elevator time to optimize handling existing calls before receiving new
       ones.
     * **Allocate unassigned calls** to the current elevator with intervals according to calls to skip.
 * If there are **unassigned calls left**: Assign one call per elevator, alternate between elevators. Continue until all
@@ -25,7 +25,7 @@ uncompleted calls |  |  |  |  |  |  |  |  |  |  |
 
 **`Pandas`** library <a href="https://pandas.pydata.org/docs/getting_started/install.html">Installation Guide</a>
 
-## 4. How to Run from Command Line:
+## 4. How to Run from the Command Line:
 
 **Provide the path in the brackets. There are csv files provided in this repository.**
 
