@@ -17,7 +17,7 @@
 ## 2. Our Results:
 
 Building | Calls | total waiting time | average waiting time per call | uncompleted calls | certificate |
---- | :---: | :---: | :---: | :---: | :---: | 
+:---: | :---: | :---: | :---: | :---: | :---: | 
 B1 | a |11292.0 |  112.92 |0 | -276569737 |
 B2 | a | 6062.0 | 60.62 | 0 | -187183277 |
 B3 | a | 3342.0 | 33.42 | 0 | -29052204 |
