@@ -69,3 +69,11 @@ java -jar Ex1_checker_V1.2_obf.jar 1111,2222 <Building.json> <Output.csv> <out.l
 ## 5. UML
 
 ![](UML.jpeg)
+
+## 6. Sources:
+
+1. <a href="https://www.geeksforgeeks.org/scan-elevator-disk-scheduling-algorithms/">SCAN (Elevator) Disk Scheduling
+   Algorithms</a>
+2. <a href="https://www.popularmechanics.com/technology/infrastructure/a20986/the-hidden-science-of-elevators/">The
+   Hidden Science of Elevators</a>
+3. <a href="http://vedantmisra.com/elevator-algorithms/">Elevator Algorithms</a>
