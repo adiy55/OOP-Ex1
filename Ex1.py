@@ -1,73 +1,56 @@
-import json
 import sys
-
 import pandas as pd
-
-import Time
+import Utilities
 from Building import Building
-from CallForElevator import CallForElevator
 
 inp = sys.argv
 b_path, i_path, o_path = inp[1], inp[2], inp[3]
 
 
+def filter_df_rows(df, b: Building):
+    """
+    :param b:
+    :param df:
+    :return:
+    copy of DataFrame with calls in building floors range """
+    calls = df.loc[((df[2] >= b.get_min_floor()) & (df[2] <= b.get_max_floor()) & (df[3] >= b.get_min_floor()) & (
+            df[3] <= b.get_max_floor()))].copy()
+    return calls
+
 def main(building_path, input_path, output_path):
     b = Building(building_path)
     elevators = b.get_elevators()
     df = pd.read_csv(input_path, index_col=False, header=None)  # DataFrame of calls
-
-    # copy of DataFrame with calls in building floors range
-    calls = df.loc[((df[2] >= b.get_min_floor()) & (df[2] <= b.get_max_floor()) & (df[3] >= b.get_min_floor()) & (
-            df[3] <= b.get_max_floor()))].copy()
-    print(len(calls))
-
-    while not calls[calls[5] == -1].empty:
-        c = calls[calls[5] == -1].iloc[0]
-        curr_first_call = CallForElevator(c)
-        elev_index = 0
-        min_time = Time.get_new_call_time(elevators[elev_index], curr_first_call)
-        for i in range(1, len(elevators)):
-            tmp_time = Time.get_new_call_time(elevators[i], curr_first_call)
-            if tmp_time < min_time:
-                min_time = tmp_time
-                elev_index = i
-        calls.loc[c.name, 5] = elev_index  # c.name is the row, 5 is the col
-        elevators[elev_index].get_call_list().append(curr_first_call)
-
-        curr_length = len(elevators[elev_index].get_call_list())
-
-    elevators[elev_index].set_time_to_finish(min_time)
+    Utilities.normalize_speed(elevators)
+    calls = filter_df_rows(df, b)
+    l = len(calls)
+    print(l)
+    for elev_index in range(len(elevators)):
+        num_calls = int(elevators[elev_index].get_norm_speed() * l)
+        call_jump = int(l / num_calls)
+        for i in range(num_calls):
+            while calls.iloc[i, 5] != -1:
+                i += 1
+            if i * call_jump < l:
+                c = calls.iloc[i * call_jump]
+                calls.loc[c.name, 5] = elevators[elev_index].get_id()  # c.name is the row, 5 is the col
     unanswered_calls = calls[calls[5] == -1]
-
+    elev_index = 0
     for i in range(len(unanswered_calls)):
-        curr_call = unanswered_calls.loc[i]
-        call = CallForElevator(curr_call)
-        curr_time = Time.call_falls_in_range(elevators[elev_index], call)
-        if curr_time and (
-                (curr_first_call.get_src() <= call.get_src() <= curr_first_call.get_dest()) or (
-                curr_first_call.get_src() >= call.get_src() >= curr_first_call.get_dest())):
-            calls.loc[curr_call.name, 5] = elev_index
-            elevators[elev_index].set_time_to_finish(Time.time_to_stop(elevators[elev_index]))
-            elevators[elev_index].get_call_list().insert(curr_length, call)
-            curr_length += 1
+        c = unanswered_calls.iloc[i]
+        calls.loc[c.name, 5] = elevators[elev_index].get_id()
+        if elev_index < len(elevators) - 1:
+            elev_index += 1
+        else:
+            elev_index = 0
 
     for i in range(len(elevators)):
         print(len(calls[calls[5] == i]))
 
-    calls.to_csv(output_path, index=False, header=False)  # todo: how to move last line in csv
+    calls.to_csv(output_path, index=False, header=False)
 
 
 main(b_path, i_path, o_path)
-# main("Ex1_input/Ex1_Buildings/B2.json", "Ex1_input/Ex1_Calls/Calls_c.csv", "Ex1_input/output.csv")
 
-# -----------------------------------------------------------------------------
-
-f = open("Ex1_input/Ex1_Buildings/B2.json")
-
-building = json.loads(f.read())
-
-print(building)
-print(building["_elevators"])
-print(building["_elevators"][0]["_speed"])
-
-f.close()
+# todo: unit testing: 1. check utility function ratios 2. check if number of allocated calls is correct by ratios and
+#  total number of calls
