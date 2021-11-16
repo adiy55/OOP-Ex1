@@ -70,7 +70,7 @@ java -jar Ex1_checker_V1.2_obf.jar 1111,2222 <Building.json> <Output.csv> <out.l
 
 ![](UML.jpeg)
 
-## 6. Resources:
+## 6. Sources:
 
 1. <a href="https://www.geeksforgeeks.org/scan-elevator-disk-scheduling-algorithms/">SCAN (Elevator) Disk Scheduling
    Algorithms</a>
