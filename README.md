@@ -66,7 +66,7 @@ java -jar Ex1_checker_V1.2_obf.jar 1111,2222 <Building.json> <Output.csv> <out.l
 * Output.csv: output file of the python program
 * out.log: path to save the simulator log
 
-## 5. UML
+## 5. UML:
 
 ![](UML.jpeg)
 
