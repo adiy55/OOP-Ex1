@@ -2,9 +2,9 @@
 
 ## Preface:
 
-This is the second assignment in the OOP course. In this task we were tasked to write an offline algorithm that assigns elevator
-calls to the most optimal elevator. This is measured by the average waiting time, uncompleted calls, etc. This is a
-continuation of the first assignment where we wrote an online algorithm for the same problem.
+This is the second assignment in the OOP course. In this task we were tasked to write an offline algorithm that assigns
+elevator calls to the most optimal elevator. This is measured by the average waiting time, uncompleted calls, etc. This
+is a continuation of the first assignment where we wrote an online algorithm for the same problem.
 
 ## 1. Algorithm:
 
@@ -68,3 +68,4 @@ java -jar Ex1_checker_V1.2_obf.jar 1111,2222 <Building.json> <Output.csv> <out.l
 
 ## 5. UML
 
+![UML](../../Desktop/UML.jpeg)
