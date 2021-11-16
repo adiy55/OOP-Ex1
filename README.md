@@ -15,15 +15,18 @@
   calls are assigned.
 
 ## 2. Our Results:
-Building/Calls | B1/a | B2/a | B3/b | B3/c | B3/d | B4/b | B4/c | B4/d | B5/b | B5/c | B5/d
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-total waiting time |  |  |  |  |  |  |  |  |  |  | 
-average waiting time per call |  |  |  |  |  |  |  |  |  |  | 
-uncompleted calls |  |  |  |  |  |  |  |  |  |  | 
+Building/Calls | B1/a | B2/a | B3/a | B3/b | B3/c | B3/d | B4/a | B4/b | B4/c | B4/d | B5/a | B5/b | B5/c | B5/d
+--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---:
+total waiting time | 11292.0 | 6062.0 | 3342.0 | 539322.251 | 567171.176 | 545657.613 | 2173.0 | 209616.179 | 207717.284 | 202338.686 | 1843.0 | 70008.114 | 69360.0 | 70306.0
+average waiting time per call | 112.92 | 60.62 | 33.42 | 539.322 | 567.171 | 545.658 | 21.73 | 209.616 | 207.717 | 202.339 | 18.43 | 70.008 | 69.36 | 70.306
+uncompleted calls | 0 | 0 | 0 | 138 | 85 | 86 | 0 | 31 | 12 | 13 | 0 | 3 | 0 | 0 | 
+certificate | -276569737 | -187183277 | -29052204 | -1774316727 | -1942650510 | -2001764854 | -52641752 | -745927639 | -770323363 | -786806834 | -80073359 | -152641781 | -155349576 | -152641771 | 
+
+*Rounded to 3 digits after the decimal point.*
 
 ## 3. Dependencies:
 
-**`Pandas`** library <a href="https://pandas.pydata.org/docs/getting_started/install.html">Installation Guide</a>
+**`Pandas`** Library (<a href="https://pandas.pydata.org/docs/getting_started/install.html">Installation Guide</a>)
 
 ## 4. How to Run from the Command Line:
 
