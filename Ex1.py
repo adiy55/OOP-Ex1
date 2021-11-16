@@ -3,9 +3,6 @@ import pandas as pd
 import Utilities
 from Building import Building
 
-inp = sys.argv
-b_path, i_path, o_path = inp[1], inp[2], inp[3]
-
 
 def filter_df_rows(df, b: Building):
     """
@@ -59,7 +56,8 @@ def main(building_path, input_path, output_path):
     calls.to_csv(output_path, index=False, header=False)
 
 
-    main(b_path, i_path, o_path)  # calling the main func
+inp = sys.argv
+if len(inp) > 3:
+    b_path, i_path, o_path = inp[1], inp[2], inp[3]
 
-# todo: unit testing: 1. check utility function ratios 2. check if number of allocated calls is correct by ratios and
-#  total number of calls
+    main(b_path, i_path, o_path)  # calling the main func
