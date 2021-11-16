@@ -1,4 +1,9 @@
 def normalize_speed(lst):
+    """
+    Calculates the normalized speed of every elevator and saves it accordingly
+    :param lst:
+    :return: void: only updates every Elevator object in lst
+    """
     sum_curr = 0
     for i in range(len(lst)):
         sum_curr += lst[i].get_speed()

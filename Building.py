@@ -4,6 +4,10 @@ from Elevator import Elevator
 
 
 def read_json(filepath) -> dict:
+    """
+    :param filepath:
+    :return: Reading JSON file function
+    """
     file = open(filepath)
     building = json.loads(file.read())
     file.close()
