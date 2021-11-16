@@ -16,15 +16,6 @@ class Elevator:
     def set_norm_speed(self, norm_speed):
         self._norm_speed = norm_speed
 
-    def get_time_to_finish(self):
-        return self._timeToFinishAllCalls
-
-    def set_time_to_finish(self, time_to_add):
-        self._timeToFinishAllCalls += time_to_add
-
-    def get_call_list(self):
-        return self._callList
-
     def get_id(self):
         return self._id
 
