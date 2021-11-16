@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+'https://plantuml.com/class-diagram
+
+class Elevator {
+  -ID: Integer
+  -speed: float
+  -min floor: Integer
+  -int max floor: Integer
+  -close_time: float
+  -open_time: float
+  -start_time: float
+  -stop_time: float
+  -norm_speed: float
+  +get_norm_speed(self): float
+  +set_norm_speed(self, float norm_speed): void
+  +get_id(self): Integer
+  +get_speed(self): float
+}
+
+class Building {
+   -read_json(String filepath): Building
+   +__init__ (self, String filepath): Building
+   +get_min_floor(self): Integer
+   +get_max_floor(self): Integer
+   -init_elevators(self): Elevator list
+   +get_elevators(self): Elevator list
+}
+
+class Ex1 {
+    +main(String building_path, String input_path, String output_path): void
+}
+
+class Utilities {
+    +filter_df_rows(DataFrame df, Building b): DataFrame
+    +normalize_speed(Elevator list lst): void
+}
+
+class Ex1_test {
+    +test_normalize_speed(self): void
+    +test_main(self): void
+}
+
+Elevator --> Building
+Elevator --> Ex1
+Building --> Ex1
+Utilities --> Ex1
+Ex1 --> Ex1_test
+
+@enduml
