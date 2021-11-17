@@ -43,11 +43,10 @@ B5 | d | 70306.0 | 70.306 | 0 |  -152641771 |
 
 ## 3. Dependencies:
 
-**`Pandas`** Library (<a href="https://pandas.pydata.org/docs/getting_started/install.html">Installation Guide</a>
+You can use `requirements.txt` in this repository to download dependencies (such as third party libraries like `pandas`)
+.
 
 ## 4. How to Run from the Command Line:
-
-_____
 
 #### You will need python and pip.
 
