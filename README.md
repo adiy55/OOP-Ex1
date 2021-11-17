@@ -43,9 +43,29 @@ B5 | d | 70306.0 | 70.306 | 0 |  -152641771 |
 
 ## 3. Dependencies:
 
-**`Pandas`** Library (<a href="https://pandas.pydata.org/docs/getting_started/install.html">Installation Guide</a>)
+**`Pandas`** Library (<a href="https://pandas.pydata.org/docs/getting_started/install.html">Installation Guide</a>
 
 ## 4. How to Run from the Command Line:
+
+_____
+
+#### You will need python and pip.
+
+To install pip on Windows run the following commands:
+
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+
+python get-pip.py
+```
+
+Then use `requirements.txt` to download the dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+_____
 
 **Provide the path in the brackets. There are csv files provided in this repository.**
 
@@ -61,10 +81,10 @@ python Ex1.py <Building.json> <Calls.csv> <Output.csv (path to save output)>
 java -jar Ex1_checker_V1.2_obf.jar 1111,2222 <Building.json> <Output.csv> <out.log>
 ```
 
-* 1111,2222: can add between 1 and 3 ID numbers separated with a comma without whitespaces
-* Building.json: same as the one used in the python program
-* Output.csv: output file of the python program
-* out.log: path to save the simulator log
+* `1111,2222`: can add between 1 and 3 ID numbers separated with a comma without whitespaces
+* `Building.json`: same as the one used in the python program
+* `Output.csv`: output file of the python program
+* `out.log`: path to save the simulator log
 
 ## 5. UML:
 
